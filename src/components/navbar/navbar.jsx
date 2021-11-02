@@ -10,6 +10,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import BasicSelect from './select';
 
+import CartWidget from './cartwidget';
+
+
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -53,10 +56,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function NavBar() {
+ 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar style={{backgroundColor:'#F06A02'}}>
           <IconButton
             size="large"
             edge="start"
@@ -67,12 +71,12 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           <BasicSelect/>
-          
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            style={{fontFamily:'Sans-serif'}}
           >
             CasaFix Norte
           </Typography>
@@ -85,7 +89,7 @@ export default function NavBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          
+          <CartWidget/>
         </Toolbar>
       </AppBar>
     </Box>
