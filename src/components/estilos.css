@@ -1,0 +1,18 @@
+.centrado{
+    width: 1000px;
+    height: 550px;
+    background-color: orange;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+.img-tamaño{
+    width: 300px; height: 300px;
+}
+
+.floatLeft{
+    float: left;
+}
+.floatRigth{
+    float: right;
+}

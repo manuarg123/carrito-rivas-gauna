@@ -12,4 +12,6 @@ const getProducts = new Promise ((resolve, reject)=>{
    reject('Error')
 })
 
+
+
 export default getProducts;

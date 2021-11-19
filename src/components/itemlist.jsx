@@ -23,7 +23,7 @@ const ItemList = ({items}) =>{
             <Stack direction="row" spacing={2} styles={{textAling:'center'}}>
             {
             items.map(({id, descripcion,nombre,marca,precio, imagen})=>(
-                <Selld> 
+                <Selld key={id}> 
                 <Item id={id}  descripcion= {descripcion} nombre={nombre} marca={marca} precio={precio} imagen={imagen}/>
                 </Selld>
             ))
