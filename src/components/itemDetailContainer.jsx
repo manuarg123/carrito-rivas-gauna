@@ -1,17 +1,32 @@
 
-
+import {useParams} from 'react-router-dom'
 import ItemDetail from './itemDetail';
+import {useState, useEffect} from 'react';
+import getProducts from '../services/dataypromesa';
 
 
-const ItemDetailContainer = ({objectz}) => {
+
+
+const ItemDetailContainer = () => {
+    const [item, setItem]=useState({});
+    const {id}=useParams();
+    console.log('Los useParams', useParams())
+    console.log('el id', id)
     
-       
+    useEffect(()=>{
+        getProducts.then((res)=>{
+            setItem(res.find((prod)=>prod.id==id));
+        }
+            
+        ); 
+    
+    },[id]);
         
     
-    console.log(objectz)
+    
     return(
         <div>
-        <ItemDetail item= {objectz}></ItemDetail>
+        <ItemDetail item= {item}></ItemDetail>
         </div>
     );
 

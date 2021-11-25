@@ -4,31 +4,34 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import {Link} from 'react-router-dom'
+
 
 export default function BasicSelect() {
-  const [age, setAge] = React.useState('');
-
+  const [cat, setCat] = React.useState('');
+  console.log(cat);
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setCat(event.target.value);
   };
 
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label" >Menu</InputLabel>
+        <InputLabel id="demo-simple-select-label" >Categorias</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
-          label="Age"
+          value={cat}
+          label="Categoria"
           
           onChange={handleChange}
         >
-          <MenuItem value={10}>Iniciar sesión</MenuItem>
-          <MenuItem value={20}>Servicios</MenuItem>
-          <MenuItem value={30}>Solicitar Presupuesto</MenuItem>
-          <MenuItem value={40}>Contactanos</MenuItem>
-          
+          <Link to={'category/todos'}><MenuItem value={'Todas'}>Todas</MenuItem></Link>
+          <Link to={'category/aireacondicionado'}><MenuItem value={'Aires Acondicionados'}>Aire Acondicionado</MenuItem></Link>
+          <Link to={'category/iluminacion'}><MenuItem value={'Iluminacion'}>Iluminacion</MenuItem></Link>
+          <Link to={'category/electricidad'}> <MenuItem value={'Electricidad'}>Electricidad</MenuItem></Link>
+          <Link to={'category/electrodomesticos'}><MenuItem value={'Electrodomésticos'}>Electrodomésticos</MenuItem></Link>
+          <Link to={'category/pintura'}><MenuItem value={'Pintura'}>Pintura</MenuItem></Link>
         </Select>
       </FormControl>
     </Box>

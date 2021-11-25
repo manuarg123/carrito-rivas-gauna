@@ -9,8 +9,8 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import BasicSelect from './select';
-
-import CartWidget from './cartwidget';
+import {Link} from 'react-router-dom'
+import CartWidget from './cartWidget';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -71,15 +71,18 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           <BasicSelect/>
+          
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
             style={{fontFamily:'Sans-serif'}}
-          >
+          ><Link to={'/'}>
             CasaFix Norte
+            </Link>
           </Typography>
+          
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
