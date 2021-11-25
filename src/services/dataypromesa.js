@@ -172,8 +172,11 @@ const items=[
 ]
 
 const getProducts = new Promise ((resolve, reject)=>{
-    resolve(items);
-   reject('Error')
+   
+   
+   
+    resolve(items)
+   reject('Error');
 })
 
 

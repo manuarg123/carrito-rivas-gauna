@@ -10,12 +10,13 @@ import getProducts from '../services/dataypromesa';
 const ItemDetailContainer = () => {
     const [item, setItem]=useState({});
     const {id}=useParams();
-    console.log('Los useParams', useParams())
-    console.log('el id', id)
+ 
     
     useEffect(()=>{
         getProducts.then((res)=>{
             setItem(res.find((prod)=>prod.id==id));
+
+            
         }
             
         ); 
