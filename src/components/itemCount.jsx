@@ -10,6 +10,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
         const newVal=count +1;
         if(newVal<= stock){
             setCount(newVal);
+            
         }
       
     };
@@ -19,6 +20,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
         const newVal=count-1;
         if(newVal>= initial){
             setCount(newVal);
+            
         }
     };
     const enviar=()=>{

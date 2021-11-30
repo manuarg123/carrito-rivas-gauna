@@ -1,25 +1,23 @@
 import React from 'react';
 import ItemCount from './itemCount';
 import './estilos.css';
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import {CartContext} from './CartContext';
 
 const ItemDetail = ({item}) => {
     
-    const [cart, setCart] = useState(true)
+    const [cart, setCart] = useState(true);
+    const {setCarr, carr} =useContext(CartContext);
     
     const onAdd=(count)=>{
-        if(count>1){
-            alert(`Se agregaron ${count} productos`);
-            
-        } else if(count===1){
-            alert(`Se agrego ${count} producto`)
-           
-            
-        }
-
+       
+      
         setCart(false);
+        setCarr([...carr, {cantidad: count , data: item}])
+        
+        
         
         
         
