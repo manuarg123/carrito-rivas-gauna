@@ -10,15 +10,34 @@ const ItemDetail = ({item}) => {
     
     const [cart, setCart] = useState(true);
     const {setCarr, carr} =useContext(CartContext);
+    const {prods,setProds}=useContext(CartContext);
     
     const onAdd=(count)=>{
+       let itemiD=item.id
        
       
         setCart(false);
+        
+        
+       if(carr.length>0){
+        for (let i=0; i<carr.length;i++){
+            if(carr[i].data.id==itemiD){
+                setCarr([...carr, {cantidad: count , data: item}])
+                setProds(prods+1);
+                
+               
+            }else{
+                setCarr([...carr, {cantidad: count , data: item}])
+                setProds(prods+1);
+                
+                
+            }
+        }
+    }else{
         setCarr([...carr, {cantidad: count , data: item}])
-        
-        
-        
+        setProds(prods+1);
+    
+    }
         
         
     

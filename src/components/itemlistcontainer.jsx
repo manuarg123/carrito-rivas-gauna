@@ -13,9 +13,15 @@ export default function ItemListContainer({greetings}){
     const [item, setItem]=useState([]);
     console.log(item);
     const {cat}=useParams();
-    
-    
-    
+
+    const [loading, setLoading]=useState(true)
+    useEffect(() => {
+        setTimeout(()=>{
+            setLoading(false);
+        },5000)
+    }, [])
+
+
     useEffect(() => {
         if(cat==='aireacondicionado') {
             setTimeout(() => getProducts.then((res)=>{
@@ -48,7 +54,7 @@ export default function ItemListContainer({greetings}){
                 } ), 2000)
             
         }else{
-            setTimeout(() =>getProducts.then((res)=>{
+           setTimeout(() =>getProducts.then((res)=>{
                 setItem(res);
                 } ), 2000)
             
@@ -61,7 +67,7 @@ export default function ItemListContainer({greetings}){
         <h1>{greetings} </h1>
         <p> Bienvenidos a la página de CasaFix Norte. Podrá encontrar un catálogo de nuestros servicios y contactar con profesionales para presupuestar los servicios requeridos</p>
         
-        <ItemList  items={item}/>
+        {loading? <h2>Cargando...</h2>:<ItemList  items={item}/>}
         </div>
     );
         

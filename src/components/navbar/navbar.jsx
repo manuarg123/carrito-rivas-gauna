@@ -9,9 +9,10 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import BasicSelect from './select';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import CartWidget from './cartWidget';
-
+import {useState,useEffect,useContext} from 'react';
+import {CartContext} from '../CartContext'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -56,6 +57,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function NavBar() {
+  const {carr,prods}=useContext(CartContext);
+  const [loading, setLoading]=useState(true)
+  console.log('carr en navbar', carr)
+    useEffect(() => {
+      if(carr.length>0 &&prods>0 ){
+        setLoading(false)
+    }
+    }, [carr,prods])
  
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -92,7 +101,7 @@ export default function NavBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <CartWidget/>
+          {loading? <div></div>:<Link to={'/cart'}><CartWidget/></Link>   }
         </Toolbar>
       </AppBar>
     </Box>

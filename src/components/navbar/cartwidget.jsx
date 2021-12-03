@@ -1,8 +1,11 @@
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Badge from '@mui/material/Badge';
 import IconButton from '@mui/material/IconButton';
+import {useContext} from 'react'
+import {CartContext} from '../CartContext';
 
 export default function CartWidget(){
+  const {prods}=useContext(CartContext);
     return (
         <IconButton
                 size="large"
@@ -12,7 +15,7 @@ export default function CartWidget(){
                 
                 color="inherit"
               >
-                <Badge badgeContent={5} color="error">
+                <Badge badgeContent={prods} color="error">
                 
              
                 <AddShoppingCartIcon />
