@@ -2,7 +2,7 @@
 import {useParams} from 'react-router-dom'
 import ItemDetail from './itemDetail';
 import {useState, useEffect} from 'react';
-import getProducts from '../services/dataypromesa';
+import { getFirestore, getDoc, doc} from 'firebase/firestore';
 
 
 
@@ -13,14 +13,25 @@ const ItemDetailContainer = () => {
  
     
     useEffect(()=>{
-        getProducts.then((res)=>{
+        /*getProducts.then((res)=>{
             setItem(res.find((prod)=>prod.id==id));
 
             
         }
             
-        ); 
+        ); */
+        const db= getFirestore();
+        
     
+        const itemRef=doc(db, 'items', id);
+    
+    
+        getDoc(itemRef).then((snapshot)=>{
+          if (snapshot.exists()){
+            setItem( {...snapshot.data(), id: snapshot.id});
+          }
+         
+        })
     },[id]);
         
     

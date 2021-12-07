@@ -27,11 +27,12 @@ export default function BasicSelect() {
           onChange={handleChange}
         >
           <Link to={'category/todos'}><MenuItem value={'Todas'}>Todas</MenuItem></Link>
-          <Link to={'category/aireacondicionado'}><MenuItem value={'Aires Acondicionados'}>Aire Acondicionado</MenuItem></Link>
-          <Link to={'category/iluminacion'}><MenuItem value={'Iluminacion'}>Iluminacion</MenuItem></Link>
-          <Link to={'category/electricidad'}> <MenuItem value={'Electricidad'}>Electricidad</MenuItem></Link>
-          <Link to={'category/electrodomesticos'}><MenuItem value={'Electrodomésticos'}>Electrodomésticos</MenuItem></Link>
-          <Link to={'category/pintura'}><MenuItem value={'Pintura'}>Pintura</MenuItem></Link>
+          <Link to={'category/airesAcondicionados'}><MenuItem value={'Aires Acondicionados'}>Aire Acondicionado</MenuItem></Link>
+          <Link to={'category/Iluminacion'}><MenuItem value={'Iluminacion'}>Iluminacion</MenuItem></Link>
+          <Link to={'category/Electricidad'}> <MenuItem value={'Electricidad'}>Electricidad</MenuItem></Link>
+          <Link to={'category/Electrodomesticos'}><MenuItem value={'Electrodomésticos'}>Electrodomésticos</MenuItem></Link>
+          <Link to={'category/Pintura'}><MenuItem value={'Pintura'}>Pintura</MenuItem></Link>
+          {console.log('catt' ,cat)}
         </Select>
       </FormControl>
     </Box>

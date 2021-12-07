@@ -3,15 +3,21 @@ import ItemList from "./itemList"
 
 import {useParams} from 'react-router-dom';
 import {useState, useEffect} from 'react'
-import getProducts from '../services/dataypromesa';
 
+import { getFirestore, getDocs,collection,query,where} from 'firebase/firestore';
 
 
 
 
 export default function ItemListContainer({greetings}){
+    
+    
+
+    
+    
+    
     const [item, setItem]=useState([]);
-    console.log(item);
+    
     const {cat}=useParams();
 
     const [loading, setLoading]=useState(true)
@@ -19,10 +25,43 @@ export default function ItemListContainer({greetings}){
         setTimeout(()=>{
             setLoading(false);
         },5000)
-    }, [])
-
-
-    useEffect(() => {
+    }, []);
+    useEffect(()=>{
+        if(!cat || cat==='todos'){
+          const db=getFirestore();
+    
+        const itemColection=collection(db, 'items');
+  
+        
+        
+        getDocs(itemColection).then((snapshot)=>{
+          
+        setItem(snapshot.docs.map((doc)=>({
+          
+          id: doc.id, ...doc.data()
+        })));  
+        });
+        
+      }else{
+        const db=getFirestore();
+    
+        const itemColection=collection(db, 'items');
+  
+        const q= query(itemColection, where('categoria', '==', cat));
+        
+        getDocs(q).then((snapshot)=>{
+          
+        setItem(snapshot.docs.map((doc)=>({
+          
+          id: doc.id, ...doc.data()
+        
+        })));  
+        });
+      }
+      }, [cat]);
+    
+    
+    /*  useEffect(() => {
         if(cat==='aireacondicionado') {
             setTimeout(() => getProducts.then((res)=>{
                 setItem(res.filter((prod)=>prod.categoria==='Aires Acondicionados'));
@@ -59,7 +98,7 @@ export default function ItemListContainer({greetings}){
                 } ), 2000)
             
         }
-    }, [cat])
+    }, [cat])*/
 
     
     return(
