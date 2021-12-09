@@ -44,16 +44,17 @@ const ItemDetail = ({item}) => {
     }
     const FinalizarCompra = () => {
 
-       
+      
         
 
         return (
             <div>
-               
+               <h4>Los productos se han agregado correctamente al carrito. Dirijase al carrito para checkear su compra.</h4>
                 <Link to="/Cart">
-                <Button style={{margin:10}} variant="contained" > Finalizar compra </Button>   
+                <Button style={{margin:10}} variant="contained" > Ir al Carrito </Button>   
                     </Link>
                
+                   
             </div>
         );
     };

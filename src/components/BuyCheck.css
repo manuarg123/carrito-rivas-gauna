@@ -1,0 +1,16 @@
+.h2Red{
+    color:red;
+}
+
+.txtFieldCont{
+    width: 400px;
+    height: 400px;
+    padding: 10px;
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+.fieldSt{
+    width: 390px;
+    margin-top: 5px;
+}

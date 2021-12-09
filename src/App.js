@@ -4,6 +4,7 @@ import ItemDetailContainer from './components/itemDetailContainer';
 import ItemListContainer from './components/itemListContainer';
 import NavBar from './components/navbar/navBar';
 import Cart from './components/Cart'
+import BuyCheck from './components/BuyCheck';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
 import { CartProvider } from './components/CartContext';
 //import {useState, useEffect} from 'react';
@@ -61,6 +62,7 @@ function App() {
       <Route path='item/:id' element= {<ItemDetailContainer  />} />
       <Route path='category/:cat' element= {<ItemListContainer  />} />
       <Route path='/cart' element= {<Cart  />} />
+      <Route path='/cart/check' element= {<BuyCheck  />} />
       
       </Routes>
       </BrowserRouter>

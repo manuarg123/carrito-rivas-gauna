@@ -31,7 +31,7 @@ const Cart = () =>{
 
      return (
          <div>
-            <h1>Soy el Cart</h1>
+            <h1>Por favor, controle los productos para confirmar su compra, eliminar productos o seguir comprando.</h1>
             
             
             { loading ? <h1>Carrito vacio</h1>:
@@ -39,6 +39,7 @@ const Cart = () =>{
                     <h3>Precio Total de Compra: </h3>
                     <p>$ {precioTotal()}</p>
                  <Button style={{margin:10}} variant="contained" onClick={clearCarr}> Eliminar productos del carrito </Button>
+                 <Link to={'/cart/check'}><Button style={{margin:10}} variant="contained" > Confirmar Compra </Button></Link>
                  <Link to={'/'}><Button style={{margin:10}} variant="contained" > Seguir comprando </Button></Link>
                  <Stack direction="row" spacing={2} styles={{textAling:'center'}}>
                  {
