@@ -1,16 +1,25 @@
-.h2Red{
-    color:red;
+.h2Red {
+  color: red;
+}
+.h2Green {
+  color: green;
 }
 
-.txtFieldCont{
-    width: 400px;
-    height: 400px;
-    padding: 10px;
-    
-    margin-left: auto;
-    margin-right: auto;
+.txtFieldCont {
+  width: 400px;
+  height: 400px;
+  padding: 10px;
+
+  margin-left: auto;
+  margin-right: auto;
 }
-.fieldSt{
-    width: 390px;
-    margin-top: 5px;
+.fieldSt {
+  width: 390px;
+  margin-top: 5px;
+  background-color: white;
+}
+.divColor {
+  background: -moz-linear-gradient(top, #fa6c0a, #fab10a);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#fa6c0a), to(#fab10a));
+  padding: 10px;
 }

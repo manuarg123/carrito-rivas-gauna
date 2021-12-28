@@ -1,113 +1,76 @@
+import ItemList from "./itemList";
+import CardMedia from '@mui/material/CardMedia';
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import './itemListContainer.css'
+import {
+  getFirestore,
+  getDocs,
+  collection,
+  query,
+  where,
+} from "firebase/firestore";
 
-import ItemList from "./itemList"
+export default function ItemListContainer({ greetings }) {
+  const [item, setItem] = useState([]);
 
-import {useParams} from 'react-router-dom';
-import {useState, useEffect} from 'react'
+  const { cat } = useParams();
 
-import { getFirestore, getDocs,collection,query,where} from 'firebase/firestore';
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  }, []);
+  useEffect(() => {
+    if (!cat || cat === "todos") {
+      const db = getFirestore();
+
+      const itemColection = collection(db, "items");
+
+      getDocs(itemColection).then((snapshot) => {
+        setItem(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+        );
+      });
+    } else {
+      const db = getFirestore();
+
+      const itemColection = collection(db, "items");
+
+      const q = query(itemColection, where("categoria", "==", cat));
+
+      getDocs(q).then((snapshot) => {
+        setItem(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+        );
+      });
+    }
+  }, [cat]);
 
 
-
-
-export default function ItemListContainer({greetings}){
-    
-    
-
-    
-    
-    
-    const [item, setItem]=useState([]);
-    
-    const {cat}=useParams();
-
-    const [loading, setLoading]=useState(true)
-    useEffect(() => {
-        setTimeout(()=>{
-            setLoading(false);
-        },5000)
-    }, []);
-    useEffect(()=>{
-        if(!cat || cat==='todos'){
-          const db=getFirestore();
-    
-        const itemColection=collection(db, 'items');
-  
-        
-        
-        getDocs(itemColection).then((snapshot)=>{
+  return (
+    <div className='contenedorPrincipal'>
+      <h1 className='txtH1'>{greetings} </h1>
+      <CardMedia
+          component="img"
+          height="300"
+          image='https://hostimage22.000webhostapp.com/imagenes/mantimage.png'
           
-        setItem(snapshot.docs.map((doc)=>({
-          
-          id: doc.id, ...doc.data()
-        })));  
-        });
-        
-      }else{
-        const db=getFirestore();
-    
-        const itemColection=collection(db, 'items');
-  
-        const q= query(itemColection, where('categoria', '==', cat));
-        
-        getDocs(q).then((snapshot)=>{
-          
-        setItem(snapshot.docs.map((doc)=>({
-          
-          id: doc.id, ...doc.data()
-        
-        })));  
-        });
-      }
-      }, [cat]);
-    
-    
-    /*  useEffect(() => {
-        if(cat==='aireacondicionado') {
-            setTimeout(() => getProducts.then((res)=>{
-                setItem(res.filter((prod)=>prod.categoria==='Aires Acondicionados'));
-                } ), 2000)
-             
-        } else if(cat==='iluminacion'){
-            setTimeout(() => getProducts.then((res)=>{
-                setItem(res.filter((prod)=>prod.categoria==='Iluminación'));
-                } ), 2000)
-            
-        } else if(cat==='electricidad'){
-            setTimeout(() =>getProducts.then((res)=>{
-                setItem(res.filter((prod)=>prod.categoria==='Electricidad'));
-                } ), 2000)
-             
-        } else if(cat==='electrodomesticos'){
-            setTimeout(() =>getProducts.then((res)=>{
-                setItem(res.filter((prod)=>prod.categoria==='Electrodomésticos'));
-                } ), 2000)
-             
-        }  else if(cat==='pintura'){
-            setTimeout(() =>getProducts.then((res)=>{
-                setItem(res.filter((prod)=>prod.categoria==='Pintura'));
-                } ), 2000)
-             
-        } else if(cat==='todos'){
-            setTimeout(() =>getProducts.then((res)=>{
-                setItem(res);
-                } ), 2000)
-            
-        }else{
-           setTimeout(() =>getProducts.then((res)=>{
-                setItem(res);
-                } ), 2000)
-            
-        }
-    }, [cat])*/
+        />
+      <p className='txtFormat'>
+        {" "}
+        Bienvenidos a la página de CasaFix-Cba. Somos una empresa dedicada a brindar servicios para el mantenimiento y  reparaciones del hogar. Podrá encontrar un catálogo de
+        nuestros servicios, y los costos aproximados. Solicite una orden con los servicios requeridos y nos pondremos en contacto, para comenzar la mejora de su hogar.
+      </p>
 
-    
-    return(
-        <div>
-        <h1>{greetings} </h1>
-        <p> Bienvenidos a la página de CasaFix Norte. Podrá encontrar un catálogo de nuestros servicios y contactar con profesionales para presupuestar los servicios requeridos</p>
-        
-        {loading? <h2>Cargando...</h2>:<ItemList  items={item}/>}
-        </div>
-    );
-        
+      {loading ? <h2>Cargando...</h2> : <ItemList  items={item} />}
+    </div>
+  );
 }

@@ -1,62 +1,77 @@
-import {useState, useContext,useEffect} from 'react';
-import {CartContext} from './CartContext';
-import Stack from '@mui/material/Stack';
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
-import ItemCart from './ItemCart'
-import Button from '@mui/material/Button';
-import {Link} from 'react-router-dom'
+import { useState, useContext, useEffect } from "react";
+import { CartContext } from "./CartContext";
 
-const Selld = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
-  
+import ItemCart from "./ItemCart";
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
+import './Cart.css'
+import Grid from '@mui/material/Grid';
 
-const Cart = () =>{
 
-    const {carr,precioTotal}=useContext(CartContext);
-    
-    const {clearCarr}=useContext(CartContext);  
-    const [loading, setLoading]=useState(false);
-    
-    useEffect(() => {
-        if(carr.length==0){
-            setLoading(true)
-        }
-    }, [carr])
-    console.log('carr:',carr)
 
-     return (
-         <div>
-            <h1>Por favor, controle los productos para confirmar su compra, eliminar productos o seguir comprando.</h1>
+
+const Cart = () => {
+  const { carr, precioTotal } = useContext(CartContext);
+
+  const { clearCarr } = useContext(CartContext);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (carr.length == 0) {
+      setLoading(true);
+    }
+  }, [carr]);
+  console.log("carr:", carr);
+
+  return (
+    <div className='itemDiv'>
+      <h1>
+        Por favor, controle los servicios solicitados para confirmar su orden, eliminar
+        servicios o seguir buscando.
+      </h1>
+
+      {loading ? (
+        <h1>Carrito vacio</h1>
+      ) : (
+        <div>
+          <h3>Costo Total de la orden: </h3>
+          <p style={{color:'green', fontSize:'35px'}}>$ {precioTotal()}</p>
+          <Button
+            style={{ margin: 10 ,backgroundColor:'rgba(255, 0, 0, 0.589)'}}
+            variant="contained"
+            onClick={clearCarr}
+          >
+            {" "}
+            Eliminar servicios del carrito{" "}
+          </Button>
+          <Link to={"/cart/check"} style={{textDecoration:'none'}}>
+            <Button style={{ margin: 10, textDecoration: 'none' }} variant="contained" color='success'>
+              {" "}
+              Confirmar Orden{" "}
+            </Button>
+          </Link>
+          <Link to={"/"} style={{textDecoration:'none'}}>
+            <Button style={{ margin: 10 }} variant="contained">
+              {" "}
+              Seguir buscando{" "}
+            </Button>
+          </Link>
+          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             
+          
+            {carr.map(({ cantidad, data }) => (
+               <Grid  item xs={12} item sm={3}  >
             
-            { loading ? <h1>Carrito vacio</h1>:
-                <div>
-                    <h3>Precio Total de Compra: </h3>
-                    <p>$ {precioTotal()}</p>
-                 <Button style={{margin:10}} variant="contained" onClick={clearCarr}> Eliminar productos del carrito </Button>
-                 <Link to={'/cart/check'}><Button style={{margin:10}} variant="contained" > Confirmar Compra </Button></Link>
-                 <Link to={'/'}><Button style={{margin:10}} variant="contained" > Seguir comprando </Button></Link>
-                 <Stack direction="row" spacing={2} styles={{textAling:'center'}}>
-                 {
-                 carr.map(({cantidad, data})=>(
-                     <Selld key={data.id}> 
-                     <ItemCart cantidad={cantidad} data={data}/>
-                     </Selld>
-                 ))
-                 }
-                 </Stack>
-                 </div>
-            }
-           
-            
-        </div>
+                <ItemCart cantidad={cantidad} data={data} key={data.id}/>
+              
+              </Grid>
+            ))}
          
-    );
-}
+          </Grid>
+        </div>
+      )}
+    </div>
+  );
+};
 
-export default Cart
+export default Cart;

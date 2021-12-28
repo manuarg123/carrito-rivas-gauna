@@ -1,20 +1,16 @@
-
-import './App.css';
-import ItemDetailContainer from './components/itemDetailContainer';
-import ItemListContainer from './components/itemListContainer';
-import NavBar from './components/navbar/navBar';
-import Cart from './components/Cart'
-import BuyCheck from './components/BuyCheck';
-import {Routes, Route, BrowserRouter} from 'react-router-dom';
-import { CartProvider } from './components/CartContext';
+import "./App.css";
+import ItemDetailContainer from "./components/itemDetailContainer";
+import ItemListContainer from "./components/itemListContainer";
+import NavBar from "./components/navbar/navBar";
+import Cart from "./components/Cart";
+import BuyCheck from "./components/BuyCheck";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { CartProvider } from "./components/CartContext";
 //import {useState, useEffect} from 'react';
 //import { getFirestore, getDocs,collection,query,where} from 'firebase/firestore';
 
-
-
-
 function App() {
- /* const [allPro, setAllPro]= useState(null);
+  /* const [allPro, setAllPro]= useState(null);
 
   useEffect(()=>{
     const db=getFirestore();
@@ -55,22 +51,25 @@ function App() {
   return (
     <div className="App">
       <CartProvider>
-      <BrowserRouter>
-      <NavBar/>
-      <Routes>
-      <Route path='/' element= {<ItemListContainer greetings="Mantenimiento del hogar"   />} />
-      <Route path='item/:id' element= {<ItemDetailContainer  />} />
-      <Route path='category/:cat' element= {<ItemListContainer  />} />
-      <Route path='/cart' element= {<Cart  />} />
-      <Route path='/cart/check' element= {<BuyCheck  />} />
-      
-      </Routes>
-      </BrowserRouter>
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ItemListContainer greetings="Mantenimiento del hogar" />
+              }
+            />
+            <Route path="item/:id" element={<ItemDetailContainer />} />
+            <Route path="category/:cat" element={<ItemListContainer />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/cart/check" element={<BuyCheck />} />
+           
+           
+          </Routes>
+        </BrowserRouter>
       </CartProvider>
     </div>
-      
-      
-      
   );
 }
 

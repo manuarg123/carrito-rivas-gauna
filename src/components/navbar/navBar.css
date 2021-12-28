@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Tourney:ital,wght@1,800&display=swap");
+
+.styleBrand {
+  color: palegreen;
+  text-decoration: none;
+  font-family: cursive;
+}
+.selectStyle {
+  background-color: peru;
+}
+.menuStyle {
+  text-decoration: none;
+  font-family: "Tourney", cursive;
+  color: #101f5b;
+
+  display: inline-block;
+  padding: 0px 0px;
+  margin: 0;
+  text-align: center;
+
+  font-size: 18px;
+}
+
+.navStyle {
+  display: flex;
+  background: -moz-linear-gradient(top, #fab10a, #fa6c0a);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#fab10a), to(#fa6c0a));
+  margin: 0 -10px;
+}
+.pushRigth {
+  width: 100%;
+  display: block;
+
+  background-color: orange;
+}
+.logo {
+  width: 100%;
+  display: block;
+}
+.imgLogo {
+  height: 40px;
+  width: 50px;
+}
+.txtLogo {
+  margin-top: 1px;
+  margin-bottom: auto;
+
+  font-family: "Tourney", cursive;
+  color: #101f5b;
+  font-size: 45px;
+}
+
+.formSelect {
+  width: 105px;
+}
+
+.headUlStyle {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.headLiStyle {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}

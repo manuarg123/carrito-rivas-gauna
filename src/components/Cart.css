@@ -1,0 +1,18 @@
+.itemDiv {
+  background: -moz-linear-gradient(top, #fa6c0a, #fab10a);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#fa6c0a), to(#fab10a));
+
+  padding: 10px;
+}
+.cardColor {
+  color: rgb(74, 143, 207);
+}
+.imgLogoDetail {
+  height: 20px;
+  width: 30px;
+}
+.txtSpan {
+  color: #101f5b;
+  font-family: "Tourney", cursive;
+  font-size: 20px;
+}

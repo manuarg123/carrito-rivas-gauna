@@ -1,0 +1,44 @@
+.itemStyle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 30px;
+}
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 10px;
+  background-color: #fff;
+  box-shadow: 4px 4px 5px 0px rgba(147, 147, 147, 0.75);
+  transition: 0.3s;
+}
+.contenedorPrincipal {
+  background: -moz-linear-gradient(top, #fa6c0a, #fab10a);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#fa6c0a), to(#fab10a));
+  background-size: cover;
+
+  padding: 10px;
+}
+.txtFormat {
+  font-family: "Tourney", cursive;
+  color: #101f5b;
+  font-size: 20px;
+}
+.txtH1 {
+  font-family: "Tourney", cursive;
+  color: #101f5b;
+}
+.imgLogoDetail {
+  height: 20px;
+  width: 30px;
+}
+.txtSpan {
+  color: #101f5b;
+  font-family: "Tourney", cursive;
+  font-size: 20px;
+}
+.fontDesc {
+  font-size: 16px;
+}

@@ -1,10 +1,15 @@
 import React from 'react';
 import ItemCount from './itemCount';
 import './estilos.css';
+import './itemDetail.css'
 import {useState, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import {CartContext} from './CartContext';
+
+
+
+import Container from '@mui/material/Container';
 
 const ItemDetail = ({item}) => {
     
@@ -15,27 +20,37 @@ const ItemDetail = ({item}) => {
     const onAdd=(count)=>{
        let itemiD=item.id
        
-      
+        console.log('La Id al momento del onAdd', itemiD)
         setCart(false);
         
         
-       if(carr.length>0){
-        for (let i=0; i<carr.length;i++){
-            if(carr[i].data.id==itemiD){
-                setCarr([...carr, {cantidad: count , data: item}])
-                setProds(prods+1);
-                
-               
-            }else{
-                setCarr([...carr, {cantidad: count , data: item}])
-                setProds(prods+1);
-                
-                
-            }
-        }
-    }else{
+       if(carr.length===0){
         setCarr([...carr, {cantidad: count , data: item}])
         setProds(prods+1);
+    }else{
+        
+        if(carr.find(ident=>ident.data.id===itemiD) ){
+               let indiceProd=0;
+            for(let i =0;i<carr.length;i++){
+                    if(carr[i].data.id===itemiD){
+                        indiceProd=i;
+                    }
+                }
+            carr[indiceProd].cantidad = carr[indiceProd].cantidad + count
+            console.log('agrega cantidad')
+           
+        }else {
+            
+            
+            
+            setCarr([...carr, {cantidad:  count , data: item}])
+            setProds(prods+1);
+            
+            console.log('setea el producto porque no esta rep')
+            
+            
+        }
+       
     
     }
         
@@ -49,9 +64,9 @@ const ItemDetail = ({item}) => {
 
         return (
             <div>
-               <h4>Los productos se han agregado correctamente al carrito. Dirijase al carrito para checkear su compra.</h4>
+               <h4  className='txtCat'>El servicio se ha registrado correctamente. Dirijase al carrito para checkear su orden.</h4>
                 <Link to="/Cart">
-                <Button style={{margin:10}} variant="contained" > Ir al Carrito </Button>   
+                <Button style={{margin:10}} variant="contained" className='buttonStyle noDec' color='success'> Ir al Carrito </Button>   
                     </Link>
                
                    
@@ -61,17 +76,25 @@ const ItemDetail = ({item}) => {
     
 
     return (
-        <div>
+        <div className='itemDiv'>
+           
+      <Container maxWidth="sm" className='itemCont' >
             <div
-       item key={item.id} className='centrado'>
-            <div className='floatLeft'> 
-            <h1>Servicio: {item.nombre}</h1>
+       item key={item.id} >
+            <div > 
+            <div><img
+                src="https://casafix.000webhostapp.com/Imagenes%20proyecto%20react/logo1i.png"
+                alt="logo"
+                className="imgLogoDetail"
+              /><span className='txtSpan'>{item.categoria}</span>
+              </div>
+            <h1 className='txtCat'> {item.nombre}</h1>
             
             <img src={item.imagen} className='img-tamaño' alt=''/>
-            <h2> Categoria: {item.categoria}</h2>
-            <h3>Tarea: {item.tarea}</h3>
-            <h4>Descripción: {item.descripcion}</h4>
-            <h6> Precio: {item.precio}</h6>
+            
+            
+            <h4 className='txtCat'><u>Descripción:</u> {item.descripcion}</h4>
+            <p className='txtPrecio'> $ {item.precio}</p>
             </div>
             
             {cart ? (
@@ -80,7 +103,7 @@ const ItemDetail = ({item}) => {
                                 
                                 initial={1}
                                 onAdd={onAdd}
-                                className='floatRigth'
+                               
                             />
                         ) : (
                             <FinalizarCompra />
@@ -88,6 +111,7 @@ const ItemDetail = ({item}) => {
             
             
         </div>
+        </Container>
         </div>
 
     )

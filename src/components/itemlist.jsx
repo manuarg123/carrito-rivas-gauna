@@ -1,36 +1,38 @@
-import React from 'react'
-import Item from './item'
+import React from "react";
+import Item from "./item";
+import './itemListContainer.css'
+
+import Grid from '@mui/material/Grid';
 
 
-import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
-import { styled } from '@mui/material/styles';
-
-const Selld = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-}));
-
-
-
-
-const ItemList = ({items}) =>{
+const ItemList = ({ items }) => {
+  return (
     
-    return (
-        <div>
-            <Stack direction="row" spacing={2} styles={{textAling:'center'}}>
-            {
-            items.map(({id, descripcion,nombre,categoria,tarea, precio, imagen})=>(
-                <Selld key={id}> 
-                <Item id={id}  descripcion= {descripcion} tarea={tarea} nombre={nombre} categoria={categoria} precio={precio} imagen={imagen}/>
-                </Selld>
-            ))
-            }
-            </Stack>
-        </div>
-
-    )
-}
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+     
+        {items.map(
+          ({ id, descripcion, nombre, categoria, tarea, precio, imagen }) => (
+            <Grid  item xs={12} item sm={6}  >
+              <Item
+                id={id}
+                descripcion={descripcion}
+                tarea={tarea}
+                nombre={nombre}
+                categoria={categoria}
+                precio={precio}
+                imagen={imagen}
+              />
+          </Grid>
+          )
+        )}
+      
+      </Grid>
+    
+  );
+};
 export default ItemList;
+/*<Stack direction="column" spacing={2} styles={{ textAling: "center" }}>
+</Stack>
+<Selld key={id}>
+  </Selld>
+*/

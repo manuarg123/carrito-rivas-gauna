@@ -1,0 +1,32 @@
+.itemDiv {
+  background: -moz-linear-gradient(top, #fa6c0a, #fab10a);
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#fa6c0a), to(#fab10a));
+
+  padding: 10px;
+}
+.itemCont {
+  background-color: #fab10a;
+  padding: 10px;
+}
+.txtCat {
+  color: #101f5b;
+}
+.txtPrecio {
+  font-size: 25px;
+  color: darkgreen;
+}
+.buttonStyle {
+  background-color: rgb(19, 85, 3);
+}
+.imgLogoDetail {
+  height: 30px;
+  width: 40px;
+}
+.txtSpan {
+  color: #101f5b;
+  font-family: "Tourney", cursive;
+  font-size: 30px;
+}
+.noDec {
+  text-decoration: none;
+}
